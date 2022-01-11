@@ -1,9 +1,11 @@
+const mysql = require('mysql');
+
 var con = mysql.createConnection({
     host: "localhost",
-    //port: "3307",
     database: "practica2php",
     user: "root",
-    password: ""
+    password: "",
+    port: "3307"
 });
 
 con.connect(function(err) {
@@ -11,5 +13,5 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
-//module.exports = con;
+module.exports = con;
 // exports.con = con;

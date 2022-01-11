@@ -1,6 +1,6 @@
 const{Router} = require('express');
 const router = Router();
-const conn = require("../common/conexion");
+const conn = require("../common/mysql.js");
 
 router.get('/', (req,res)=>{
     conn.query('Select * from usuario', (err,rows,fields)=>{
@@ -9,7 +9,7 @@ router.get('/', (req,res)=>{
       } else{
         console.log(err);
       }
-    });
+  });
 });
 
 module.exports = router;

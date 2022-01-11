@@ -13,6 +13,9 @@ app.use(express.json());
 
 //routes
 app.use(require('./users/users'));
+app.use(require('./users/usersbyid'));
+app.use(require('./vehicles/listadevehiculos'));
+
 
 //empezando el servidor
 app.listen(3000,()=>{

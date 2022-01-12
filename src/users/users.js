@@ -3,6 +3,7 @@ var app = express()
 const conn = require("../common/mysql.js");
 //const mysql = require('mysql');
 
+//Lista de usuarios
 const users = (req, res, conn) => {
     const sql = "SELECT * from usuario";
     conn.query(sql, (err, result) => {
@@ -13,6 +14,7 @@ const users = (req, res, conn) => {
 }
 exports.users = users
 
+//Información de un usuario, filtrando por su ID
 const userId = (req, res, conn) => {
     const id_usuario = req.query.id
     const sql = `SELECT * from usuario WHERE id_usu = ${id_usuario}`;
@@ -25,6 +27,7 @@ const userId = (req, res, conn) => {
 
 exports.userId = userId
 
+//Crear un nuevo usuario
 const modUsuId = (req, res, conn) => {
     const id_usu = req.query.idusu
     const nombre = req.query.nombre
@@ -39,7 +42,6 @@ const modUsuId = (req, res, conn) => {
         'pass':pass,
         'admin':admin
     })
-
 }
 
 exports.modUsuId = modUsuId

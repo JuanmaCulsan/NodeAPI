@@ -36,12 +36,17 @@ app.get('/serVehId', (req, res) => serVehId(req, res, conn))
 const serId = require('./servic/services').serId
 app.get('/serId', (req, res) => serId(req, res, conn))
 
+//Crear un nuevo usuario 
+const creaUsuId = require('./users/users').creaUsuId
+app.post('/creaUsuId', (req, res) => creaUsuId(req, res, conn))
+
 //modificar datos de un usuario
 const modUsuId = require('./users/users').modUsuId
 app.post('/modUsuId', (req, res) => modUsuId(req, res, conn))
 
-//crear un nuevo usuario 
-
+//Borrar datos de un usuario
+const delUsuId = require('./users/users').delUsuId
+app.get('/delUsuId', (req, res) => delUsuId(req, res, conn))
 
 //empezando el servidor
 app.listen(3000,()=>{

@@ -28,21 +28,61 @@ const userId = (req, res, conn) => {
 exports.userId = userId
 
 //Crear un nuevo usuario
-const modUsuId = (req, res, conn) => {
-    const id_usu = req.query.idusu
-    const nombre = req.query.nombre
-    const login = req.query.login
-    const pass = req.query.pass
-    const admin = req.query.admin
+const creaUsuId = (req, res, conn) => {
 
-    res.send({
-        'id_usu':id_usu,
-        'nombre':nombre,
-        'login':login,
-        'pass':pass,
-        'admin':admin
-    })
+    let sql = "insert into usuario set ?";
+    let usuario = {
+
+        id_usu: req.body.idusu,
+        nombre : req.body.nombre,
+        login : req.body.login,
+        pass : req.body.pass,
+        admin : req.body.admin
+    }
+
+    conn.query(sql, usuario,err => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+
+    res.send("USUARIO CREADO");
+}
+
+exports.creaUsuId = creaUsuId
+
+//Modifica un usuario
+const modUsuId = (req, res, conn) => {
+    const id_usu = req.query.id
+    let usuario = {
+        nombre : req.body.nombre,
+        login : req.body.login,
+        pass : req.body.pass,
+        admin : req.body.admin
+    }
+    let sql = `UPDATE usuario SET ? WHERE id_usu '${id_usu}'`;
+    conn.query(sql, usuario,err => {
+        if (err) throw err;
+        return res.json(result);
+    });
+
+    res.send("USUARIO MODIFICADO");
 }
 
 exports.modUsuId = modUsuId
+
+//Eliminar a un usuario
+const delUsuId = (req, res, conn) => {
+    const id_usuario = req.query.id
+    const sql = `DELETE FROM usuario WHERE id_usu = '${id_usuario}'`;
+    conn.query(sql, (err, result) => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+
+    res.send("USUARIO ELIMINADO");
+}
+
+exports.delUsuId = delUsuId
 

@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //routes
+
 //Lista de usuarios
 const users = require('./users/users').users
 app.get('/listUsu', (req, res) => users(req, res, conn))
@@ -36,17 +37,53 @@ app.get('/serVehId', (req, res) => serVehId(req, res, conn))
 const serId = require('./servic/services').serId
 app.get('/serId', (req, res) => serId(req, res, conn))
 
-//Crear un nuevo usuario 
-const creaUsuId = require('./users/users').creaUsuId
-app.post('/creaUsuId', (req, res) => creaUsuId(req, res, conn))
+
+
+//LISTA DE USUARIOS
 
 //modificar datos de un usuario
 const modUsuId = require('./users/users').modUsuId
 app.post('/modUsuId', (req, res) => modUsuId(req, res, conn))
 
+//Crear un nuevo usuario 
+const creaUsuId = require('./users/users').creaUsuId
+app.post('/creaUsuId', (req, res) => creaUsuId(req, res, conn))
+
 //Borrar datos de un usuario
 const delUsuId = require('./users/users').delUsuId
 app.get('/delUsuId', (req, res) => delUsuId(req, res, conn))
+
+
+
+//LISTA DE VEHICULOS
+
+//modificar datos de un vehiculo
+const modVehId = require('./vehicles/vechiles').modVehId
+app.post('/modVehId', (req, res) => modVehId(req, res, conn))
+
+//Crear un nuevo vehiculo
+const creaVehId = require('./vehicles/vechiles').creaVehId
+app.post('/creaVehId', (req, res) => creaVehId(req, res, conn))
+
+//Borrar datos de un vehiculo
+const delVehId = require('./vehicles/vechiles').delVehId
+app.get('/delVehId', (req, res) => delVehId(req, res, conn))
+
+
+
+//LISTA DE SERVICIOS
+
+//modificar datos de un servicio
+const modSerId = require('./servic/services').modSerId
+app.post('/modSerId', (req, res) => modSerId(req, res, conn))
+
+//Crear un nuevo usuario 
+const creaSerId = require('./servic/services').creaSerId
+app.post('/creaSerId', (req, res) => creaSerId(req, res, conn))
+
+//Borrar datos de un usuario
+const delSerId = require('./servic/services').delSerId
+app.get('/delSerId', (req, res) => delSerId(req, res, conn))
 
 //empezando el servidor
 app.listen(3000,()=>{

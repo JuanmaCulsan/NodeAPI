@@ -24,32 +24,7 @@ const userId = (req, res, conn) => {
         return res.json(result);
     });
 }
-
 exports.userId = userId
-
-//Crear un nuevo usuario
-const creaUsuId = (req, res, conn) => {
-
-    let sql = "insert into usuario set ?";
-    let usuario = {
-
-        id_usu: req.body.idusu,
-        nombre : req.body.nombre,
-        login : req.body.login,
-        pass : req.body.pass,
-        admin : req.body.admin
-    }
-
-    conn.query(sql, usuario,err => {
-        if (err) throw err;
-
-        return res.json(result);
-    });
-
-    res.send("USUARIO CREADO");
-}
-
-exports.creaUsuId = creaUsuId
 
 //Modifica un usuario
 const modUsuId = (req, res, conn) => {
@@ -68,8 +43,30 @@ const modUsuId = (req, res, conn) => {
 
     res.send("USUARIO MODIFICADO");
 }
-
 exports.modUsuId = modUsuId
+
+
+//Crear un nuevo usuario
+const creaUsuId = (req, res, conn) => {
+    let sql = "insert into usuario set ?";
+    let usuario = {
+        id_usu: req.body.idusu,
+        nombre : req.body.nombre,
+        login : req.body.login,
+        pass : req.body.pass,
+        admin : req.body.admin
+    }
+
+    conn.query(sql, usuario,err => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+
+    res.send("USUARIO CREADO");
+}
+exports.creaUsuId = creaUsuId
+
 
 //Eliminar a un usuario
 const delUsuId = (req, res, conn) => {

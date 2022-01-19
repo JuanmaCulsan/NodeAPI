@@ -12,8 +12,8 @@ const vehUserId = (req, res, conn) => {
         return res.json(result);
     });
 }
-
 exports.vehUserId = vehUserId;
+
 
 //Información de un vehículo filtrando por el ID del vehículo
 const vehId = (req, res, conn) => {
@@ -25,5 +25,61 @@ const vehId = (req, res, conn) => {
         return res.json(result);
     });
 }
-
 exports.vehId = vehId;
+
+
+//Modifica un vehiculo
+const modVehId = (req, res, conn) => {
+    const id_veh = req.query.id
+    let vehiculos = {
+        id_usu: req.body.idusu,
+        matricula: req.body.matricula,
+        marca: req.body.marca,
+        modelo: req.body.modelo
+    }
+    let sql = `UPDATE vehiculos SET ? WHERE id_veh '${id_veh}'`;
+    conn.query(sql, vehiculos,err => {
+        if (err) throw err;
+        return res.json(result);
+    });
+
+    res.send("VEHICULO MODIFICADO");
+}
+exports.modVehId = modVehId
+
+
+//Crear un nuevo vehiculo
+const creaVehId = (req, res, conn) => {
+    let sql = "insert into vehiculos set ?";
+    let vehiculos = {
+        id_veh: req.body.idveh,
+        id_usu: req.body.idusu,
+        matricula: req.body.matricula,
+        marca: req.body.marca,
+        modelo: req.body.modelo
+    }
+
+    conn.query(sql, vehiculos,err => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+
+    res.send("VEHICULO CREADO");
+}
+exports.creaVehId = creaVehId
+
+
+//Eliminar un vehiculo
+const delVehId = (req, res, conn) => {
+    const id_veh = req.query.id
+    const sql = `DELETE FROM vehiculos WHERE id_veh = '${id_veh}'`;
+    conn.query(sql, (err, result) => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+
+    res.send("VEHICULO ELIMINADO");
+}
+exports.delVehId = delVehId

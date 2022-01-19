@@ -58,15 +58,15 @@ app.get('/delUsuId', (req, res) => delUsuId(req, res, conn))
 //LISTA DE VEHICULOS
 
 //modificar datos de un vehiculo
-const modVehId = require('./vehicles/vechiles').modVehId
+const modVehId = require('./vehicles/vehicles').modVehId
 app.post('/modVehId', (req, res) => modVehId(req, res, conn))
 
 //Crear un nuevo vehiculo
-const creaVehId = require('./vehicles/vechiles').creaVehId
+const creaVehId = require('./vehicles/vehicles').creaVehId
 app.post('/creaVehId', (req, res) => creaVehId(req, res, conn))
 
 //Borrar datos de un vehiculo
-const delVehId = require('./vehicles/vechiles').delVehId
+const delVehId = require('./vehicles/vehicles').delVehId
 app.get('/delVehId', (req, res) => delVehId(req, res, conn))
 
 

@@ -62,7 +62,6 @@ const creaUsuId = (req, res, conn) => {
 
         return res.json(result);
     });
-
     res.send("USUARIO CREADO");
 }
 exports.creaUsuId = creaUsuId
@@ -77,9 +76,7 @@ const delUsuId = (req, res, conn) => {
 
         return res.json(result);
     });
-
     res.send("USUARIO ELIMINADO");
 }
-
 exports.delUsuId = delUsuId
 

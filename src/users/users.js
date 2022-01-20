@@ -80,3 +80,17 @@ const delUsuId = (req, res, conn) => {
 }
 exports.delUsuId = delUsuId
 
+
+//Información de un usuario y su lista de vehículos en la misma llamada filtrando por ID de usuario
+
+const usuVeh_UsuId = (req, res, conn) => {
+    const id_usuario = req.query.id
+    const sql = `SELECT * from usuario, vehiculos WHERE usuario.id_usu = ${id_usuario} and vehiculos.id_usu = ${id_usuario}`;
+    conn.query(sql, (err, result) => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+}
+exports.usuVeh_UsuId = usuVeh_UsuId
+

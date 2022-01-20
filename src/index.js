@@ -85,6 +85,19 @@ app.post('/creaSerId', (req, res) => creaSerId(req, res, conn))
 const delSerId = require('./servic/services').delSerId
 app.get('/delSerId', (req, res) => delSerId(req, res, conn))
 
+
+
+//QUERY COMPLEJAS
+
+//Información de un usuario y su lista de vehículos en la misma llamada filtrando por ID de usuario
+const usuVeh_UsuId = require('./users/users').usuVeh_UsuId
+app.get('/listaUser', (req, res) => usuVeh_UsuId(req, res, conn))
+
+//Información de un vehículo y su lista de servicios en la misma llamada filtrando por ID de usuario 
+const vehSer_vehId = require('./vehicles/vehicles').vehSer_vehId
+app.get('/listaSer', (req, res) => vehSer_vehId(req, res, conn))
+
+
 //empezando el servidor
 app.listen(3000,()=>{
     console.log(`Server on port ${app.get('port')}`);

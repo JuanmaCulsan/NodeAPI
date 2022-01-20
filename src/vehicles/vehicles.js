@@ -83,3 +83,16 @@ const delVehId = (req, res, conn) => {
     res.send("VEHICULO ELIMINADO");
 }
 exports.delVehId = delVehId
+
+
+//Información de un vehículo y su lista de servicios en la misma llamada filtrando por ID de usuario
+const vehSer_vehId = (req, res, conn) => {
+    const id_veh = req.query.id
+    const sql = `SELECT * from vehiculos veh, servicios ser WHERE veh.id_veh = ${id_veh} and ser.id_veh = ${id_veh}`;
+    conn.query(sql, (err, result) => {
+        if (err) throw err;
+
+        return res.json(result);
+    });
+}
+exports.vehSer_vehId = vehSer_vehId

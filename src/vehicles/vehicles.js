@@ -4,8 +4,8 @@ const conn = require("../common/mysql.js");
 
 //Lista de vehículos filtrando por ID de usuario
 const vehUserId = (req, res, conn) => {
-    const id_usuario = req.query.id
-    const sql = `SELECT * from vehiculos WHERE id_usu = ${id_usuario}`;
+    const id = req.query.id
+    const sql = `SELECT * from vehiculos WHERE id_usu = ${id}`;
     conn.query(sql, (err, result) => {
         if (err) throw err;
 

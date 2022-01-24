@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var cors = require('cors')
 const morgan = require('morgan');
 const conn = require('./common/mysql')
 //ajustes
@@ -10,7 +11,7 @@ app.set('json spaces', 2);
 app.use(morgan('dev'));//permite ver por consola lo que va llegando al servidor
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
+app.use(cors());
 //routes
 
 //Lista de usuarios

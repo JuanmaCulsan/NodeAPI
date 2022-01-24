@@ -16,8 +16,8 @@ exports.users = users
 
 //Información de un usuario, filtrando por su ID
 const userId = (req, res, conn) => {
-    const id_usuario = req.query.id
-    const sql = `SELECT * from usuario WHERE id_usu = ${id_usuario}`;
+    const id = req.query.id
+    const sql = `SELECT * from usuario WHERE id_usu = ${id}`;
     conn.query(sql, (err, result) => {
         if (err) throw err;
 

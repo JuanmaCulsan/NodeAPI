@@ -78,7 +78,13 @@ function verVehiculo(){
     })
         
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+        data.forEach(i => {
+            document.querySelector("p").innerHTML+=i.matricula+"<br>"+"<br>";
+            document.querySelector("p").innerHTML+=i.marca+"<br>"+"<br>";
+            document.querySelector("p").innerHTML+=i.modelo+"<br>"+"<br>";
+        });
+    })
 }
 
 function idVeh(){

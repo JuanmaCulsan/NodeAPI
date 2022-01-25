@@ -1,4 +1,6 @@
 window.onload=function(){
+    var p = document.createElement("p");
+    document.querySelector("#mostrar").appendChild(p);
     //+"'" + nombre + "'";
     var lista = document.querySelector("input");
     lista.setAttribute("onclick","verlista()");
@@ -14,6 +16,7 @@ window.onload=function(){
 }
 
 function verlista(){
+    document.querySelector("p").textContent="";
     const url = 'http://localhost:3000/listUsu';
     fetch(url, {
         method: 'GET',
@@ -25,14 +28,18 @@ function verlista(){
     })
         
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+            data.forEach(i => {
+                document.querySelector("p").innerHTML+=i.nombre+"<br>"+"<br>";
+            });
+        })       
     
 }
 
 function verUsuario(){
+    document.querySelector("p").textContent="";
     var id = document.getElementById('idusuario');
     var valor = id.value;
-    console.log(valor);
     var url = 'http://localhost:3000/userId?id='+"'"+valor+"'";
 
     fetch(url, {
@@ -45,7 +52,14 @@ function verUsuario(){
     })
         
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+        console.log(data);
+        data.forEach(i => {
+            document.querySelector("p").innerHTML+=i.nombre+"<br>"+"<br>";
+            document.querySelector("p").innerHTML+=i.id_usu+"<br>"+"<br>";
+            document.querySelector("p").innerHTML+=i.login+"<br>"+"<br>";
+        });
+    })
 }
 
 function verVehiculo(){

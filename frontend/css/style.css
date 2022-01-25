@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    display: flex;
+}
+
+#botones{
+    border: 2px blue dotted;
+    width: 50%;
+    margin: 2.5rem;
+    padding: 1.5rem;
+}
+
+#mostrar{
+    border: 2px black solid;
+    width: 100%;
+    margin: 2.5rem;
+    padding: 1.5rem;
+}

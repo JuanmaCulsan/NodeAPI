@@ -28,14 +28,14 @@ exports.userId = userId
 
 //Modifica un usuario
 const modUsuId = (req, res, conn) => {
-    const id_usu = req.query.id
+    const nombre = req.query.nombre
     let usuario = {
         nombre : req.body.nombre,
         login : req.body.login,
         pass : req.body.pass,
         admin : req.body.admin
     }
-    let sql = `UPDATE usuario SET ? WHERE id_usu '${id_usu}'`;
+    let sql = `UPDATE usuario SET ? WHERE nombre '${nombre}'`;
     conn.query(sql, usuario,err => {
         if (err) throw err;
         return res.json(result);

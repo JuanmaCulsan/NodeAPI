@@ -44,7 +44,7 @@ app.get('/serId', (req, res) => serId(req, res, conn))
 
 //modificar datos de un usuario
 const modUsuId = require('./users/users').modUsuId
-app.post('/modUsuId', (req, res) => modUsuId(req, res, conn))
+app.post('/modUsunombre', (req, res) => modUsuId(req, res, conn))
 
 //Crear un nuevo usuario 
 const creaUsuId = require('./users/users').creaUsuId

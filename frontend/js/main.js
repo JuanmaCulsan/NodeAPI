@@ -1,8 +1,6 @@
 window.onload=function(){
-    var p = document.createElement("p");
-    document.querySelector("#mostrar").appendChild(p);
     //+"'" + nombre + "'";
-    var lista = document.querySelector("input");
+    var lista = document.getElementById("listadeusuario");
     lista.setAttribute("onclick","verlista()");
 
     var usuario = document.querySelector("#user");
@@ -20,7 +18,9 @@ window.onload=function(){
 }
 
 function verlista(){
-    document.querySelector("p").textContent="";
+    var padre = document.querySelector("#mostrar");
+    var p = document.createElement("p");
+    var d = document.createElement("p");
     const url = 'http://localhost:3000/listUsu';
     fetch(url, {
         method: 'GET',
@@ -34,9 +34,12 @@ function verlista(){
     .then(response => response.json())
     .then(data => {
             data.forEach(i => {
-                document.querySelector("p").innerHTML+=i.nombre+"<br>"+"<br>";
+                p.innerHTML+="nombre: "+i.nombre+" || ID: "+i.id_usu+"<br>"+"<br>";
+                padre.appendChild(p);
             });
-        })       
+        }) 
+    
+    
     
 }
 
@@ -172,3 +175,81 @@ function nameEdit(){
 
     
 }
+
+
+//GEODB CITIES
+// fetch("https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
+// 		"x-rapidapi-key": "1e23246fbbmshf599e7a964575adp186c60jsn55d8668d0b85"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .then(data => { console.log(data);
+//     data.forEach(function(user){
+//         for (const i in user) {
+//             document.querySelector("p").innerHTML+=user[i]+"<br>"+"<br>";
+//         }
+//     })
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+
+
+
+//TRANSLATE
+// const url = "https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions";
+// fetch(url, {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
+// 		"x-rapidapi-key": "1e23246fbbmshf599e7a964575adp186c60jsn55d8668d0b85"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .then(data => { console.log(data.json());
+//     data.forEach(function(user){
+//         for (const i in user) {
+//             document.querySelector("p").innerHTML+=user[i]+"<br>"+"<br>";
+//         }
+//     })
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+//CAT FACTS
+function getaFact(){
+    var padre = document.querySelector("#api");
+    const url="https://catfact.ninja/docs/api-docs.json";
+
+    fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+        
+    .then(response => response.json())
+    .then(data => { console.log(data);
+        data.forEach(function(user){
+            for (const i in user) {
+                var p = document.createElement("p");
+                p.innerHTML+=user[i]+"<br>"+"<br>";
+                padre.appendChild(p);
+
+            }
+        })
+    });
+}
+
+

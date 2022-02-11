@@ -37,14 +37,12 @@ function verlista(){
                 p.innerHTML+="nombre: "+i.nombre+" || ID: "+i.id_usu+"<br>"+"<br>";
                 padre.appendChild(p);
             });
-        }) 
-    
-    
-    
+        })  
 }
 
 function verUsuario(){
-    document.querySelector("p").textContent="";
+    var padre = document.querySelector("#mostrar");
+    var p = document.createElement("p");
     var id = document.getElementById('idusuario');
     var valor = id.value;
     var url = 'http://localhost:3000/userId?id='+"'"+valor+"'";
@@ -61,9 +59,8 @@ function verUsuario(){
     .then(response => response.json())
     .then(data => {
         data.forEach(i => {
-            document.querySelector("p").innerHTML+=i.nombre+"<br>"+"<br>";
-            document.querySelector("p").innerHTML+=i.id_usu+"<br>"+"<br>";
-            document.querySelector("p").innerHTML+=i.login+"<br>"+"<br>";
+            p.innerHTML+=i.nombre+"<br>"+"<br>"+i.id_usu+"<br>"+"<br>";
+            p.innerHTML+=i.login+"<br>"+"<br>";
         });
     })
 }

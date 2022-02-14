@@ -77,3 +77,9 @@ body{
     align-items: center;
 }
 
+.crear,.modificar{
+    border-radius: 7px;
+    padding-left: 7px;
+    text-justify: auto;
+    margin: 5px;
+}

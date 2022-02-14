@@ -7,14 +7,16 @@
     <title>Document</title>
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />   
 </head>
 <body>
     <div id="banner">
-        <h1 id="titulo">GARAJES PAJERO</h1>
+        <h1 id="titulo">GARAJES EDUARDO</h1>
         <div class="login">
-            <p>Que pasa</p>
+            <p>Nombre</p>
             <input type="text" name="nombre2" id="nombre">
-            <p>Lo otro</p>
+            <p>Contraseña</p>
             <input type="password" name="password" id="password">
         </div>
     </div>
@@ -24,19 +26,19 @@
                 <input type="button" value="Lista de Usuario" id="listadeusuario">
                 <br>
                 <br>
-                <input type="text" name="" id="idusuario">
+                <input type="text" id="idusuario">
                 <input type="button" value="Id de Usuario" id="user">
                 <br>
                 <br>
-                <input type="text" name="" id="iduserveh">
+                <input type="text" id="iduserveh">
                 <input type="button" value="Id de Usuario para vehiculo" id="userveh">
                 <br>
                 <br>
-                <input type="text" name="" id="idveh2">
+                <input type="text" id="idveh2">
                 <input type="button" value="Id de vehiculo" id="idveh">
                 <br>
                 <br>
-                <input type="text" name="" id="editUsu">
+                <input type="text" id="editUsu">
                 <input type="button" value="Editar un usuario" id="idUsuEdit">
             </div>
             <div id="mostrar">
@@ -52,23 +54,20 @@
                     <label for="">Admin</label><input type="text"><br>
                 </div>
                 <div id="modificar">
-                    <h2>Crear un Usuario</h2>
-                    <label for="">ID</label><input type="text"><br>
+                    <h2>Modifica un Usuario</h2>
+                    <label for="">ID</label><input type="text" id="text"><br>
                     <label for="">Nombre</label><input type="text"><br>
                     <label for="">Pass</label><input type="text"><br>
                     <label for="">Login</label><input type="text"><br>
                     <label for="">Admin</label><input type="text"><br>
                 </div>
                 <div id="borrar">
-                    <h2>Crear un Usuario</h2>
-                    <label for="">ID</label><input type="text"><br>
+                    <h2>Borra un Usuario</h2>
+                    <input id="ninio" type="text"><button onclick="borrar()">Aceptar</button><br>
                 </div>
             </div>
-            <div id="mapa">
-                <div style="width: 100%">
-                    <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=medac%20nova+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">GPS devices</a>
-                    </iframe>
-                </div>
+            <h1>Busca un vehiculo</h1>
+            <div id='map' style='width: 1600px; height: 500px;'>
             </div>
             
         </div>

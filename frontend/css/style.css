@@ -68,7 +68,7 @@ body{
     padding: 1.5rem;
 }
 
-#mapa{
+#map{
     display: block;
     width: 80%;
     height: auto;
@@ -76,3 +76,4 @@ body{
     justify-content: center;
     align-items: center;
 }
+

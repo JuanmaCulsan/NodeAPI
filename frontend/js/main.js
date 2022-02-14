@@ -15,6 +15,26 @@ window.onload=function(){
     var idUsuEdit = document.querySelector("#idUsuEdit");
     idUsuEdit.setAttribute("onclick","nameEdit()");
 
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoianVhbm1hMTIzNDUiLCJhIjoiY2t6aTlpczVuMWlrbjJxbnJoMXhmZ20xeCJ9.-619CtW5j4J3sMIZmI4uVQ';
+    const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [12.550343, 55.665957],
+    zoom: 8
+    });
+    
+    // Create a default Marker and add it to the map.
+    const marker1 = new mapboxgl.Marker()
+    .setLngLat([12.554729, 55.70651])
+    .addTo(map);
+    
+    // Create a default Marker, colored black, rotated 45 degrees.
+    const marker2 = new mapboxgl.Marker({ color: 'black', rotation: 45 })
+    .setLngLat([12.65147, 55.608166])
+    .addTo(map);
+
+
 }
 
 function verlista(){
@@ -61,6 +81,7 @@ function verUsuario(){
         data.forEach(i => {
             p.innerHTML+=i.nombre+"<br>"+"<br>"+i.id_usu+"<br>"+"<br>";
             p.innerHTML+=i.login+"<br>"+"<br>";
+            padre.appendChild(p);
         });
     })
 }
@@ -147,7 +168,7 @@ function nameEdit(){
     }
     if(res){
         alert("cagaste");
-        url = 'http://localhost:3000//modUsunombre?nombre='+"'"+valor+"'";
+        url = 'http://localhost:3000/modUsunombre?nombre='+"'"+valor+"'";
         fetch(url, {
             method: 'GET',
             mode: 'cors',
@@ -171,6 +192,22 @@ function nameEdit(){
     }
 
     
+}
+
+function borrar(){
+    var usu = document.getElementById("ninio").value;
+    console.log(usu);
+
+    url = 'http://localhost:3000/delUsuId?id_usuario='+"'"+usu+"'";
+        fetch(url, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+    alert("KAKA");
 }
 
 
